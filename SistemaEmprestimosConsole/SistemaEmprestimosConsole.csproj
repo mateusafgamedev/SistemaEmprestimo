@@ -7,4 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Service\GerenciarEmprestimosService.cs" />
+    <Compile Remove="Service\GerenciarLivrosService.cs" />
+    <Compile Remove="Service\GerenciarUsuariosService.cs" />
+  </ItemGroup>
+
 </Project>

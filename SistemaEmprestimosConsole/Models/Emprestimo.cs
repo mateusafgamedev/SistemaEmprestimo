@@ -12,7 +12,7 @@ namespace SistemaEmprestimosConsole.Models
         public int IdLivro { get; set; }
         public int IdUsuario { get; set; }
         public DateTime DataEmprestimo { get; set; } = DateTime.Now;
-        public DateTime DataDevolucao { get; set; }
+        public DateTime? DataDevolucao { get; set; } = null;
 
     }
 }
