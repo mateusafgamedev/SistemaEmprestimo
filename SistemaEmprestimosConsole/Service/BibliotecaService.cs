@@ -7,15 +7,12 @@ using System.Threading.Tasks;
 
 namespace SistemaEmprestimosConsole.Service
 {
-    class BibliotecaService
+    class BibliotecaService 
     {
+        GerenciarLivrosService gerenciarLivros = new GerenciarLivrosService();
+        GerenciarUsuariosService gerenciarUsuarios = new GerenciarUsuariosService();
 
-        private List<Livro> livros = new List<Livro>();
-        private List<Usuario> usuarios = new List<Usuario>();
         private List<Emprestimo> emprestimos = new List<Emprestimo>();
-
-        private int livroIdCounter = 1;
-        private int usuarioIdCounter = 1;
         private int emprestimoIdCounter = 1;
 
         public void MenuPrincipal()
@@ -60,11 +57,11 @@ namespace SistemaEmprestimosConsole.Service
                 switch (opcao)
                 {
 
-                    case "1": AdcionarLivros(); break;
-                    case "2": ListarLivros(); break;
-                    //case "3": atualizarlivros(); break;
-                    //case "4": removerlivros(); break;
-                    //case "0": return;
+                    case "1": gerenciarLivros.AdcionarLivros(); break;
+                    case "2": gerenciarLivros.ListarLivros(); break;
+                    case "3": gerenciarLivros.Atualizarlivros(); break;
+                    case "4": gerenciarLivros.Removerlivros(); break;
+                    case "0": return;
                     default: Console.WriteLine("Opção inválida!"); break;
                 }
             }
@@ -84,16 +81,16 @@ namespace SistemaEmprestimosConsole.Service
 
                 string opcao = Console.ReadLine();
 
-                //switch (opcao)
-                //{
+                switch (opcao)
+                {
 
-                //    case "1": AdcionarUsuarios(); break;
-                //    case "2": ListarUsuarios(); break;
-                //    case "3": AtualizarUsuarios(); break;
-                //    case "4": RemoverUsuarios(); break;
-                //    case "0": return;
-                //    default: Console.WriteLine("Opção inválida!"); break;
-                //}
+                    case "1": gerenciarUsuarios.AdcionarUsuarios(); break;
+                    case "2": gerenciarUsuarios.ListarUsuarios(); break;
+                    case "3": gerenciarUsuarios.AtualizarUsuarios(); break;
+                    case "4": gerenciarUsuarios.RemoverusUarios(); break;
+                    case "0": return;
+                    default: Console.WriteLine("opção inválida!"); break;
+                }
             }
         }
 
@@ -121,29 +118,6 @@ namespace SistemaEmprestimosConsole.Service
                 //    case "0": return;
                 //    default: Console.WriteLine("Opção inválida!"); break;
                 //}
-            }
-        }
-
-        private void AdcionarLivros()
-        {
-            Console.WriteLine("Título: ");
-            string titulo = Console.ReadLine();
-
-            Console.WriteLine("Autor: ");
-            string autor = Console.ReadLine();
-
-            livros.Add(new Livro { Id = livroIdCounter++, Titulo = titulo, Autor = autor, Disponivel = true });
-            Console.WriteLine("Livro adicionado com sucesso!!");
-        }
-
-        private void ListarLivros()
-        {
-            Console.WriteLine("\nLista de Livros");
-
-            foreach (Livro livro in livros)
-            {
-                string status = livro.Disponivel ? "Dísponivel" : "Emprestado";
-                Console.WriteLine($"ID: {livro.Id} | Título: {livro.Titulo} | Autor: {livro.Disponivel} | {status} ");
             }
         }
     }
